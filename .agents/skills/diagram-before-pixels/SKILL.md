@@ -101,8 +101,7 @@ the whole block, run the checklist again.
 **Do not advance to Phase 3 while any check fails.**
 
 Expect 5–10 rounds. Each round is seconds and effectively free — this is the entire
-point of the technique. Ten cheap revisions here replace ten expensive
-regenerations later.
+point of the technique.
 
 Two things to do explicitly in this loop:
 
@@ -140,14 +139,20 @@ spending another credit:
 
 | What is wrong | What it means | What to do |
 |---|---|---|
-| Structure — missing box, wrong arrow, wrong grouping | The ASCII was wrong, or the model ignored it | Fix the ASCII, regenerate. Never patch structure with prose. |
-| Style only — structure correct, looks wrong | Style spec too vague | Adjust style spec, resend the ASCII **byte-identical** |
-| One region — single label garbled, one icon off | Local defect | Use the model's image-edit / inpaint path, not a full regeneration |
+| Structure — missing box, wrong arrow, wrong grouping | The ASCII was wrong, or the model ignored it | Fix the ASCII, regenerate **full frame** — use the Correction prompt in `references/image-prompts.md`. Never patch structure with prose. |
+| Style only — structure correct, looks wrong | Style spec too vague | Adjust style spec, resend the ASCII **byte-identical** via the same Correction prompt, full frame |
+| One region — single label garbled, one icon off, everything else already right | Local defect | Use the model's image-edit / inpaint path — the one case where a partial result is correct |
 | Text garbled throughout | Model has weak in-image text rendering | Switch to the overlay fallback in `references/image-prompts.md` |
 
 Re-prompting from prose after a bad generation is the failure mode this whole skill
 exists to prevent. If you find yourself writing a longer description, stop and go
 back to the ASCII.
+
+**Always ask for the full image back, not just the fix.** Conversational edit models
+default to returning only the region they think changed — say "return the complete
+image at full frame" explicitly in every correction, or you get a crop instead of a
+diagram. See the Correction prompt template in `references/image-prompts.md`; it
+applies to both branches of Step 0.
 
 ## Illustrative composition (for the illustrative branch of Step 0)
 
@@ -221,12 +226,10 @@ Phase 3 should happen at all.
 ## Why this saves quota
 
 Prose-first, the image model is inventing structure from an ambiguous description,
-so it guesses — and typically needs 5–15 regenerations before the guess matches
-intent. ASCII-first, structure is already settled and agreed, so 1–2 generations is
-normal.
+so it guesses. ASCII-first, structure is already settled and agreed, so fewer
+generations are needed.
 
 The revisions do not disappear. They move from the expensive medium to the cheap one.
-Ten ASCII edits plus one generation, instead of ten generations.
 
 ## Reference files
 

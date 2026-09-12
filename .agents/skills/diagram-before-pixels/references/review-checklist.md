@@ -166,8 +166,7 @@ edges, boundaries, or dependency directions to verify.
 2. **Completeness** — does every region that affects that sentence appear? A dragon
    sketch that's all head and no scene context is missing the story.
 3. **Necessity** — remove each region in turn. If the sentence still lands without it,
-   cut it. Same highest-yield check as the structural list, same reason: cheap here,
-   expensive as a regeneration.
+   cut it. Same highest-yield check as the structural list.
 4. **Weight and placement** — does box size match intended visual dominance, and does
    grid position match intended frame position (top/mid/bottom, left/center/right)? A
    "background" element drawn as big as the subject will render as big as the subject.

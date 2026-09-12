@@ -157,13 +157,46 @@ Before spending a second generation, identify which layer failed:
 
 - **Structure wrong** — a box is missing, an arrow reversed, grouping off. Either the
   ASCII was wrong (fix it) or the model ignored it (strengthen the authoritative-layout
-  instruction, reduce competing style prose). Regenerate.
+  instruction, reduce competing style prose). Regenerate with the **Correction prompt**
+  below — do not just say "fix the X box" in chat, or the model will hand back a crop.
 - **Style wrong, structure right** — swap the style preset. Resend the ASCII
-  **byte-identical**; do not retype or reflow it.
-- **One region wrong** — use image edit / inpaint scoped to that region. Do not
-  regenerate the whole image.
+  **byte-identical** via the Correction prompt below; do not retype or reflow it.
+- **One region wrong** — use image edit / inpaint scoped to that region. This is the
+  one case where a partial result is correct — see the note at the end of the
+  Correction prompt section.
 - **Text garbled throughout** — switch to the overlay fallback. Further prompt tuning
   will not fix a model-level limitation.
 
 Never respond to a bad generation by writing a longer prose description. That is the
 prose-first failure mode, re-entered through the back door.
+
+## Correction prompts (full regenerate, not a silent crop)
+
+Conversational image-edit models — Gemini/Nano Banana included — default to returning
+only the region they think changed unless told otherwise. That default is backwards
+for a structure or style fix: the whole frame has to stay in sync with the change, so
+a cropped patch is a wrong answer even when the patch itself is correct. State the
+full-frame requirement explicitly, every time, rather than trusting the default:
+
+````text
+Apply this fix: [ONE-SENTENCE DESCRIPTION OF WHAT CHANGED — e.g. "move the cache box
+between gateway and orders-svc" or "widen the wings to fill more of the frame"].
+
+[PASTE THE UPDATED ASCII LAYOUT OR COMPOSITION SKETCH — VERBATIM]
+
+Return the complete image at full frame with this fix applied. Do not return only the
+corrected region, a cropped patch, or a diff/overlay of just the change — regenerate
+the whole image so every part of it stays consistent with the fix.
+````
+
+If the model keeps returning a partial crop after this instruction, treat it as the
+"text garbled throughout" case above: a model-level limitation, not a prompt problem —
+fall back to a fresh generation from the full original prompt template rather than
+continuing the conversational thread.
+
+The one exception: a genuinely local, one-off defect — a single garbled label, one
+icon off — where everything else in the last generation was already right. There, the
+scoped image-edit / inpaint path is correct and a partial result is the intended
+outcome, not a bug. Reach for it only when nothing outside that one spot needs to
+change; if two or more regions are affected, or the fix touches anything the ASCII
+describes as connected to other boxes, use the Correction prompt above instead.
