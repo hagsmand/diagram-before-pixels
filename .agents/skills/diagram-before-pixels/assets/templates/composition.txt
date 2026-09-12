@@ -1,0 +1,30 @@
+TITLE: <the one sentence the viewer must feel or recognize>
+
++--------------------------------------------------+
+|             <BACKGROUND / TOP REGION>             |
+|            <one-line description>                |
++---------------------------+----------------------+
+|                           |                      |
+|      <ELEMENT A>          |    <ELEMENT B>       |
+|      <description>        |    <description>     |
+|     +---------------------+----------------------+
+|     |                                            |
+|     |              <MAIN SUBJECT>                |
+|     |            <description>                   |
+|     |                                            |
++-----+----------------------------+---------------+
+|          <ELEMENT C>             |  <ELEMENT D>  |
+|      <description>               | <description> |
++----------------------------------+---------------+
+|       <FOREGROUND REGION>: <description>         |
++--------------------------------------------------+
+
+Fill-in order:
+  1. TITLE — the one sentence from Illustrative composition step 1
+  2. MAIN SUBJECT — the dominant region anchors everything else
+  3. surrounding elements, sized by visual weight (dominant/secondary/background)
+  4. background and foreground regions last — they frame, they don't compete
+
+Region names in caps, one-line description beneath. Plain ASCII rules (`+ - |`) only —
+no box-drawing Unicode, no arrows; adjacency in the grid is the composition. Match the
+frame's outer proportions to the intended aspect ratio (square, 16:9, portrait).

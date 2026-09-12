@@ -54,21 +54,21 @@ the [Agent Skills](https://agentskills.io/specification) format.
 **Any agent** — installs into every agent you have:
 
 ```bash
-npx skills add hagsmand/ascii-image
+npx skills add hagsmand/diagram-before-pixels
 ```
 
 **Claude Code, as a plugin:**
 
 ```
-/plugin marketplace add hagsmand/ascii-image
+/plugin marketplace add hagsmand/diagram-before-pixels
 /plugin install diagram-before-pixels@diagram-before-pixels
 ```
 
 **Manual** — copy into whichever path your agent scans:
 
 ```bash
-git clone https://github.com/hagsmand/ascii-image
-cd ascii-image
+git clone https://github.com/hagsmand/diagram-before-pixels
+cd diagram-before-pixels
 
 # Codex CLI / Cursor / OpenCode — native path
 cp -r .agents/skills/diagram-before-pixels ~/.agents/skills/

@@ -39,6 +39,38 @@ Do not:
 That last negative constraint matters more than it looks. Without it, models
 periodically produce a photograph of monospace text on a screen instead of a diagram.
 
+## Illustrative handoff (composition sketch, not diagram)
+
+For the illustrative branch (SKILL.md Step 0), the ASCII is a frame-region grid, not a
+node graph, and the negative-constraint list changes shape to match. Do not reuse the
+diagram template above — it tells the model to preserve boxes and arrows, which are
+meaningless in an illustration.
+
+````text
+Render this as a single illustration.
+
+The ASCII composition sketch below is the AUTHORITATIVE framing. Each region's name,
+its position in the grid, and its relative size describe where that element sits in
+the final image and how much visual weight it carries. Do not render the ASCII rule
+characters themselves — they mark regions, not objects.
+
+```
+[PASTE THE FROZEN COMPOSITION SKETCH HERE — VERBATIM, INCLUDING THE TITLE LINE]
+```
+
+Style: [PASTE ONE STYLE PRESET BELOW, OR THE HOUSE STYLE]
+
+Do not:
+- add any element, character, or background detail not named in a region
+- move an element into a different region, or swap two regions' relative sizes
+- invent additional subjects not implied by the named regions
+- render grid lines, borders, or any trace of the ASCII sketch's rule characters
+````
+
+The same Phase 4 diagnosis table applies: a wrong element in the wrong place is a
+sketch problem (fix the grid, regenerate), a right layout that looks wrong is a style
+problem (swap the preset, resend the sketch byte-identical).
+
 ## Style presets
 
 Copy one verbatim into the `Style:` line.

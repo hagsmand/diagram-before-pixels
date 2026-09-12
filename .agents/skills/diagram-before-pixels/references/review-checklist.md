@@ -6,6 +6,10 @@ built on.
 
 Order matters: 1–3 can delete whole boxes, so run them before polishing anything.
 
+This checklist is for the **structural** branch (nodes, edges, boundaries). For the
+illustrative branch, use the lighter "Illustrative variant" checklist at the bottom of
+this file instead.
+
 ---
 
 ## 1. Message
@@ -149,3 +153,27 @@ All ten pass →
 2. Ask where the diagram is going. Docs or wiki → ship the ASCII or convert to
    Mermaid and stop; there is no reason to spend quota.
 3. Presentation-grade output needed → Phase 3.
+
+---
+
+## Illustrative variant
+
+For the illustrative branch's composition sketch. Five checks, not ten — there are no
+edges, boundaries, or dependency directions to verify.
+
+1. **Message** — can you state what the viewer feels or recognizes after three
+   seconds? If not, go back and get the one sentence before drawing more.
+2. **Completeness** — does every region that affects that sentence appear? A dragon
+   sketch that's all head and no scene context is missing the story.
+3. **Necessity** — remove each region in turn. If the sentence still lands without it,
+   cut it. Same highest-yield check as the structural list, same reason: cheap here,
+   expensive as a regeneration.
+4. **Weight and placement** — does box size match intended visual dominance, and does
+   grid position match intended frame position (top/mid/bottom, left/center/right)? A
+   "background" element drawn as big as the subject will render as big as the subject.
+5. **Text budget** — same as structural check 10: list every string (if any) that must
+   appear in the image, verbatim. Most illustrative requests have zero — that's fine,
+   note it explicitly rather than leaving it unconsidered.
+
+Exit gate: all five pass → freeze the sketch, go to Phase 3 with the "Illustrative
+handoff" variant in `image-prompts.md`.

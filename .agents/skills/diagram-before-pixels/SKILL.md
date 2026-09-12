@@ -1,14 +1,18 @@
 ---
 name: diagram-before-pixels
 description: >-
-  Converge on a diagram's structure in cheap ASCII before spending any
-  image-generation quota, then render it once. Use when asked to create or
-  revise an architecture diagram, system diagram, flowchart, sequence diagram,
-  infographic, or technical illustration — especially when an image model
-  (Nano Banana, Gemini, GPT Image, DALL-E, Midjourney, Imagen, Stable
-  Diffusion) will produce the final artwork. Also use when image generations
-  keep coming back structurally wrong, when diagram credits or quota are
-  limited, or when a diagram must match a real system exactly.
+  Converge on an image's structure in cheap ASCII before spending any
+  image-generation quota, then render it once. Covers two distinct cases:
+  structural diagrams (architecture, system, flowchart, sequence, state
+  machine, infographic) drafted as nodes/edges/boundaries, and illustrative or
+  creative image requests (a dragon, a character, a scene, a product shot)
+  drafted as a composition sketch — a single frame with labeled regions
+  showing where each visual element sits. Use whenever an image model (Nano
+  Banana, Gemini, GPT Image, DALL-E, Midjourney, Imagen, Stable Diffusion)
+  will produce the final artwork, whichever case applies — do not force a
+  creative subject into boxes-and-arrows. Also use when image generations keep
+  coming back structurally or compositionally wrong, when quota is limited, or
+  when the result must match a real system or a specific composition exactly.
 license: MIT
 ---
 
@@ -25,6 +29,26 @@ is to **render**, not to architect. You do the architecture in monospace first.
 
 Never send a prose-only description to an image model when structure matters. Send
 the finalized ASCII layout as the authoritative spec, with prose only for style.
+
+## Step 0 — Classify: structural or illustrative?
+
+Two different jobs share this skill. Tell them apart before drawing anything.
+
+- **Structural** — the viewer must understand relationships: architecture, flowcharts,
+  sequence diagrams, state machines, org charts, infra topology. There are real nodes
+  that call, own, or depend on each other. Go to **Phase 0** below.
+- **Illustrative** — the viewer must see a subject: a dragon, a character, a product
+  shot, a landscape, a portrait. There is no call graph — there's a subject with parts,
+  occupying regions of a frame. Skip Phase 0's node/edge/boundary extraction and go
+  straight to **Illustrative composition** below.
+
+Tell them apart by asking: do any two elements *call, send to, or depend on* each
+other? "Draw a dragon breathing fire over a village" has a subject and a scene, not a
+call graph — illustrative. "Show how the checkout service calls Stripe" has actors
+exchanging messages — structural. A dragon's wing is not a "component" that an arrow
+points at; forcing it into boxes-and-arrows is the mirror image of the mistake this
+skill exists to prevent — don't trade a wrong picture for a wrong diagram. When the
+request is genuinely ambiguous, ask the user which one they mean rather than guessing.
 
 ## Phase 0 — Extract the spec before drawing anything
 
@@ -125,9 +149,62 @@ Re-prompting from prose after a bad generation is the failure mode this whole sk
 exists to prevent. If you find yourself writing a longer description, stop and go
 back to the ASCII.
 
+## Illustrative composition (for the illustrative branch of Step 0)
+
+Same reasoning as Phase 0–3, lighter weight, different vocabulary: no nodes and edges,
+just a subject and the frame it occupies.
+
+1. **The one sentence.** What must the viewer feel or recognize after three seconds —
+   "a dragon mid-roar, coiled to strike" is a sentence; "a dragon" is not.
+2. **Elements.** Named parts of the subject and scene — `head`, `wings`, `tail`, `fire
+   breath`, `mountain background`, `foreground rock` — not `Component A`.
+3. **Frame regions.** Where each element sits (top/mid/bottom × left/center/right) and
+   its relative weight — dominant, secondary, or background — plus the frame's aspect
+   ratio (square, 16:9, portrait), which is part of the spec, not an afterthought.
+4. **Composition sketch.** One frame divided into labeled regions — a grid, not a node
+   graph. Plain ASCII rules (`+ - |`), not box-drawing Unicode: this is a wireframe of
+   the *frame*, and using the structural diagram's own character set would blur the
+   two into looking like the same kind of artifact. Region name in caps, one-line
+   description beneath it:
+
+   ```
+   +--------------------------------------------------+
+   |             STORMY SKY + FULL MOON               |
+   |        Clouds, stars, distant flying dragons     |
+   +---------------------------+----------------------+
+   |                           |                      |
+   |      DRAGON WINGS         |   MOUNTAIN PEAKS     |
+   |                           |   + ruined castle    |
+   |     +---------------------+----------------------+
+   |     |                                            |
+   |     |            MAIN DRAGON                     |
+   |     |       Head, glowing eyes, scales           |
+   |     |                                            |
+   +-----+----------------------------+---------------+
+   |          DRAGON BODY             |  FIRE BREATH  |
+   |     Standing on rocky cliff      |  toward valley|
+   +----------------------------------+---------------+
+   |       FOREGROUND: rocks, warrior, glowing lava   |
+   +--------------------------------------------------+
+   ```
+
+   Region sizes are a rough proportion of screen real estate, not exact math — bigger
+   box means more visual weight, that's the whole signal.
+
+Run the same review loop as Phase 2: show the sketch, revise it, and run the
+highest-yield check — remove each labeled region in turn and ask whether the one
+sentence still lands. Cut what doesn't. Then hand off per Phase 3 and the "Illustrative
+handoff" variant in `references/image-prompts.md`, swapping "preserve every box and
+arrow" for "preserve every labeled region's position and relative size." The same
+negative constraints apply: no elements beyond the sketch, no resized or repositioned
+regions, no invented parts.
+
 ## When to skip the image model entirely
 
-Be honest about this rather than pushing every diagram to pixels:
+This applies to the structural branch — an illustrative request (a dragon, a scene, a
+portrait) has no non-pixel end state; the composition sketch is scaffolding, not the
+deliverable. For structural diagrams, be honest about this rather than pushing every
+diagram to pixels:
 
 - **Docs, READMEs, wikis, PR descriptions, code comments** — ship the ASCII itself,
   or convert it to Mermaid. Both are diffable, reviewable in a PR, version
@@ -157,8 +234,8 @@ Load these on demand, not up front:
 
 | File | Read it when |
 |---|---|
-| `references/ascii-patterns.md` | Phase 1 — choosing and drawing a topology |
-| `references/review-checklist.md` | Phase 2 — every review round |
+| `references/ascii-patterns.md` | Phase 1 — choosing and drawing a topology (or pattern 10 for illustrative) |
+| `references/review-checklist.md` | Phase 2 — every review round (structural or illustrative variant) |
 | `references/image-prompts.md` | Phase 3/4 — building the handoff prompt, picking a style, per-model quirks |
 | `assets/bootstrap-prompt.md` | The user wants a copy-paste prompt to get an ASCII draft out of any chat AI |
-| `assets/templates/` | Phase 1 — starting skeleton per topology |
+| `assets/templates/` | Phase 1 — starting skeleton per topology, or `composition.txt` for the illustrative branch |

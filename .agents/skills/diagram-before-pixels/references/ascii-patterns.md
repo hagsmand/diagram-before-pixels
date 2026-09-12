@@ -25,6 +25,9 @@ Convention used throughout — keep it consistent within one diagram:
 | Boundary crossing | line passes through a `║` or `═` wall |
 | The box the diagram is *about* | heavy border `┏━┓` |
 
+This character set is for patterns 1–9, all structural. Pattern 10 (illustrative
+composition) deliberately uses plain ASCII `+ - |` instead — see there for why.
+
 ---
 
 ## 1. Linear pipeline
@@ -285,6 +288,45 @@ trust boundary is.
 ║  ╚═════════════════════════════════════════╝  ║
 ╚═══════════════════════════════════════════════╝
 ```
+
+---
+
+## 10. Illustrative composition (subject layout, not topology)
+
+**Use when** the request is illustrative, not structural — SKILL.md Step 0 sent you
+here because there's a subject with parts, not a call graph. A dragon, a character, a
+product shot, a landscape.
+
+**Prevents** forcing a creative subject into boxes-and-arrows, which reads as neither a
+correct diagram nor a usable illustration brief.
+
+Plain ASCII rules (`+ - |`), not box-drawing Unicode — a grid of frame regions, not a
+node graph. Region name in caps, one-line description beneath:
+
+```
++--------------------------------------------------+
+|             STORMY SKY + FULL MOON               |
+|        Clouds, stars, distant flying dragons     |
++---------------------------+----------------------+
+|                           |                      |
+|      DRAGON WINGS         |   MOUNTAIN PEAKS     |
+|                           |   + ruined castle    |
+|     +---------------------+----------------------+
+|     |                                            |
+|     |            MAIN DRAGON                     |
+|     |       Head, glowing eyes, scales           |
+|     |                                            |
++-----+----------------------------+---------------+
+|          DRAGON BODY             |  FIRE BREATH  |
+|     Standing on rocky cliff      |  toward valley|
++----------------------------------+---------------+
+|       FOREGROUND: rocks, warrior, glowing lava   |
++--------------------------------------------------+
+```
+
+Box size is rough proportion of screen real estate, not exact math — a bigger box
+means more visual weight. There is no requirement that regions connect to each other
+and no arrows; adjacency in the grid *is* the composition.
 
 ---
 

@@ -14,6 +14,9 @@ in top to bottom in the order each file specifies.
 | `swimlane.txt` | Who does what, when. Handoffs, release processes, runbooks. |
 | `quadrant.txt` | Positioning options against two axes. |
 | `bounded-mesh.txt` | Many-to-many *and* boundaries matter. Security, VPC topology. |
+| `composition.txt` | Illustrative, not structural — a subject with parts in a frame. Dragon, character, product shot, scene. |
 
 Worked examples of each, with the failure mode each pattern prevents, are in
-`../../references/ascii-patterns.md`.
+`../../references/ascii-patterns.md`. `composition.txt` is the one exception: it's
+covered in SKILL.md's "Illustrative composition" section instead, since it follows a
+different step sequence (no Phase 0 nodes/edges/boundaries).
