@@ -54,21 +54,21 @@ the [Agent Skills](https://agentskills.io/specification) format.
 **Any agent** — installs into every agent you have:
 
 ```bash
-npx skills add <owner>/<repo>
+npx skills add hagsmand/ascii-image
 ```
 
 **Claude Code, as a plugin:**
 
 ```
-/plugin marketplace add <owner>/<repo>
+/plugin marketplace add hagsmand/ascii-image
 /plugin install diagram-before-pixels@diagram-before-pixels
 ```
 
 **Manual** — copy into whichever path your agent scans:
 
 ```bash
-git clone https://github.com/<owner>/<repo>
-cd <repo>
+git clone https://github.com/hagsmand/ascii-image
+cd ascii-image
 
 # Codex CLI / Cursor / OpenCode — native path
 cp -r .agents/skills/diagram-before-pixels ~/.agents/skills/
@@ -113,29 +113,13 @@ reduced to one copy-paste message. Works in any chat AI.
 `references/` and `assets/` load on demand, so the resident context cost is just
 `SKILL.md`.
 
-## Before you publish this repo
+## Contributing
 
-- [ ] Replace `<owner>/<repo>` in the install commands above with your GitHub path.
-- [ ] `.claude-plugin/marketplace.json` requires `owner.name`; it currently holds the
-      repo name. Put your name or handle there if you want attribution shown.
-- [ ] Validate the skill: `npx -y @agentskills/skills-ref validate .agents/skills/diagram-before-pixels`
-- [ ] Push to a public GitHub repo — that alone makes `npx skills add <owner>/<repo>`
-      work. No submission step.
+Validate the skill before opening a PR:
 
-## Where this can be listed
-
-- **[skills.sh](https://www.skills.sh)** — no submission needed. Any public repo
-  containing a `SKILL.md` is installable via `npx skills add`; it auto-discovers
-  `.agents/skills/`.
-- **[agentskill.sh/submit](https://agentskill.sh/submit)** and
-  **[gotskills.sh](https://www.gotskills.sh/docs/publishing)** — accept a bare repo URL.
-- **[awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills)** —
-  requires ≥10 GitHub stars, and explicitly rejects AI-generated pull requests. Submit
-  by hand, later, once the repo has traction.
-- **[anthropics/skills](https://github.com/anthropics/skills)** is a demonstration
-  repo, not a community registry — it has no contribution guide and a large backlog of
-  unmerged PRs. **[agentskills/agentskills](https://github.com/agentskills/agentskills)**
-  states it does not maintain a directory of community skills. Don't plan on either.
+```bash
+npx -y @agentskills/skills-ref validate .agents/skills/diagram-before-pixels
+```
 
 ## License
 
