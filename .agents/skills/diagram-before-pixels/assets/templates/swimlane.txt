@@ -1,0 +1,22 @@
+TITLE: <the one sentence the viewer must conclude>
+
+              │ <actor 1>     │ <actor 2>     │ <actor 3>     │ <actor 4>
+──────────────┼───────────────┼───────────────┼───────────────┼──────────────
+<phase 1>     │ ██ <action>   │               │               │
+              │               │               │               │
+<phase 2>     │               │ ██ <action>   │               │
+              │               │    <duration> │               │
+              │               │               │               │
+<phase 3>     │               │               │ ██ <action>   │
+              │               │               │    <or the    │
+              │               │               │     alt path> │
+              │               │               │               │
+<phase 4>     │ ██ <action>   │               │               │ ██ <action>
+
+Fill-in order:
+  1. TITLE  2. actors across the top  3. phases down the left, in time order
+  4. one ██ block per action, in the owning actor's column
+  5. durations or gates where they matter
+
+The value of this pattern is handoffs — every phase where the ██ moves columns is a
+handoff. Make sure each one is unambiguous about who acts next.

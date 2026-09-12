@@ -1,0 +1,25 @@
+TITLE: <the one sentence the viewer must conclude>
+
+            <high end of y axis>
+                   ▲
+     ┌─────────────┼─────────────┐
+     │ <quadrant>  │ <quadrant>  │
+     │             │             │
+     │ · <item>    │ · <item>    │
+     │ · <item>    │ · <item>    │
+     │             │             │
+     │─────────────┼─────────────│──▶ <high end of x axis>
+     │ <quadrant>  │ <quadrant>  │
+     │             │             │
+     │ · <item>    │ · <item>    │
+     │ · <item>    │ · <item>    │
+     └─────────────┼─────────────┘
+                   ▼
+            <low end of y axis>
+
+Fill-in order:
+  1. TITLE  2. both axes, labelled at BOTH ends — a one-ended axis is read
+     backwards about half the time  3. quadrant names  4. items
+
+Keep items to 2-3 per quadrant. A crowded quadrant chart communicates nothing that
+a sorted table would not communicate better.

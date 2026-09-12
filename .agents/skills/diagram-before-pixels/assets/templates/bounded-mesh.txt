@@ -1,0 +1,33 @@
+TITLE: <the one sentence the viewer must conclude>
+
+╔═══════════════ <outer zone: e.g. public internet> ═══════════════╗
+║  ┌──────────────┐              ┌──────────────┐                  ║
+║  │  <actor>     │              │  <external>  │                  ║
+║  └──────┬───────┘              └──────┬───────┘                  ║
+╚═════════│═════════════════════════════│══════════════════════════╝
+          │ <protocol + auth>           │ <protocol + auth>
+╔═════════▼═════════════════════════════▼══════════════════════════╗
+║              <middle zone: e.g. vpc-prod (CIDR)>                 ║
+║  ┌──────────────┐                ┌──────────────────┐            ║
+║  │  <edge>      │───────────────▶│  <worker>        │            ║
+║  └──────┬───────┘   <what for>   └────────┬─────────┘            ║
+║         │ <protocol>                      │ <what for>           ║
+║  ╔══════▼══════ <inner zone: e.g. private subnet> ═══▼════════╗  ║
+║  ║  ┏━━━━━━━━━━━━┓            ┌──────────────┐               ║  ║
+║  ║  ┃ <subject>  ┃───────────▶│  <store>     │               ║  ║
+║  ║  ┗━━━━━┯━━━━━━┛  <what for>└──────────────┘               ║  ║
+║  ║        │ ┄┄┄┄▶ ┌──────────────┐                           ║  ║
+║  ║        └──────▶│  <cache>     │                           ║  ║
+║  ║      <what for>└──────────────┘                           ║  ║
+║  ╚═══════════════════════════════════════════════════════════╝  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+Fill-in order:
+  1. TITLE  2. the ZONES first — this pattern exists to show boundaries, so draw
+     the walls before the boxes  3. label each wall with the zone name and any
+     identifier (CIDR, cluster, region)  4. boxes inside their correct zone
+  5. heavy border on the subject  6. every boundary-crossing edge gets protocol
+     AND the auth mechanism
+
+The load-bearing detail is what happens at each wall crossing. If a crossing has no
+auth or protocol label, the diagram is not finished.

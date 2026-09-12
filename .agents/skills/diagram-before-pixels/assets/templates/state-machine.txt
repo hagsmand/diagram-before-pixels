@@ -1,0 +1,30 @@
+TITLE: <the one sentence the viewer must conclude>
+
+                      ┌──────────────┐
+        <event> ─────▶│  <initial>   │
+                      └──────┬───────┘
+              <event ok>  │  │  <event fail / timeout>
+                   ┌──────┘  └───────┐
+                   ▼                 ▼
+            ┌──────────────┐   ┌──────────────┐
+            │  <state>     │   │  <state>     │◀── terminal
+            └──────┬───────┘   └──────────────┘
+      <event>  │   │  <event>
+               ▼   └────────────────┐
+        ┌──────────────┐            ▼
+        │  <state>     │     ┌──────────────┐
+        └──────┬───────┘     │  <state>     │◀── terminal
+     <event>   │             └──────────────┘
+               ▼
+        ┌──────────────┐
+        │  <state>     │◀── terminal
+        └──────────────┘
+
+Fill-in order:
+  1. TITLE  2. initial state  3. terminal states, marked explicitly
+  4. states between  5. the EVENT on every transition — a state machine diagram
+     without event names is just a list of states
+
+Then audit: any state with no outbound edge that is not marked terminal is a bug.
+Any state with no inbound edge is unreachable. Both are free to find here and
+expensive to find in a rendered image.

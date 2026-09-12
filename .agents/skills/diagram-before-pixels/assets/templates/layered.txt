@@ -1,0 +1,28 @@
+TITLE: <the one sentence the viewer must conclude>
+
+┌───────────────────────────────────────────────────┐
+│  <top tier: concrete names>                       │  <tier name>
+└───────────────────────────────────────────────────┘
+                    │ <what crosses this gap>
+                    ▼
+┌───────────────────────────────────────────────────┐
+│  <next tier>                                      │  <tier name>
+└───────────────────────────────────────────────────┘
+                    │ <what crosses this gap>
+                    ▼
+┌───────────────────────────────────────────────────┐
+│  <core tier — usually the one with no I/O>         │  <tier name>
+└───────────────────────────────────────────────────┘
+                    ▲
+                    │ <implements / injected into>
+┌───────────────────────────────────────────────────┐
+│  <adapters, drivers, infrastructure>              │  <tier name>
+└───────────────────────────────────────────────────┘
+
+Fill-in order:
+  1. TITLE  2. tier names on the right  3. real component names inside each tier
+  4. label every gap  5. verify arrow directions — the upward arrow from the bottom
+     tier is the point of a dependency-inversion diagram; getting it backwards is
+     the most common error in this pattern
+
+All boxes must be the same width. Pad with spaces.

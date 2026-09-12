@@ -1,0 +1,7 @@
+interface:
+  display_name: Diagram before pixels
+  short_description: Draft diagrams in ASCII first, then render once — saves image quota.
+  brand_color: "#2f6f4f"
+
+policy:
+  allow_implicit_invocation: true

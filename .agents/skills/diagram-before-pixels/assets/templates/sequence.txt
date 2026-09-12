@@ -1,0 +1,24 @@
+TITLE: <the one sentence the viewer must conclude>
+
+ <actor 1>      <actor 2>      <actor 3>       <actor 4>        <external>
+    │              │              │               │                │
+    │─ <request> ─▶│              │               │                │
+    │              │─ <call> ────▶│               │                │
+    │              │◀─ <result> ──│               │                │
+    │              │─ <call> ─────────────────────▶│                │
+    │              │              │               │─ <call> ──────▶│
+    │              │              │               │◀─ <result> ────│
+    │              │◀─ <result> ──────────────────│                │
+    │◀─ <response> │              │               │                │
+    │              │              │               │                │
+    │              │   ┄ <async event name> ┄                      │
+    │              │              │               │◀┄┄┄┄┄┄┄┄┄┄┄┄┄┄│
+    │              │              │               │─ <effect> ───▶ <store>
+
+Fill-in order:
+  1. TITLE  2. actor names across the top, left to right in call order
+  3. messages top to bottom in time order  4. mark async legs dashed
+  5. include the failure or timeout leg if it affects the message
+
+Vertical position already encodes order — add step numbers only if the final image
+will be walked through step by step.

@@ -1,0 +1,18 @@
+TITLE: <the one sentence the viewer must conclude>
+
+┌──────────────┐            ┌──────────────┐            ┌──────────────┐
+│  <source>    │───────────▶│  <stage 1>   │───────────▶│  <sink>      │
+└──────────────┘  <payload> └──────┬───────┘  <payload> └──────────────┘
+                                   │ <failure condition>
+                                   ▼
+                            ┌──────────────┐
+                            │  <dlq/sink>  │
+                            └──────────────┘
+
+Fill-in order:
+  1. TITLE  2. source and sink (the ends anchor everything)  3. stages between
+  4. payload label on every arrow  5. the failure branch — a pipeline with no
+     failure path is an incomplete diagram
+
+Extend right for more stages. Keep total width under 100 columns; if it does not
+fit, the pipeline has too many stages for one diagram — split it.

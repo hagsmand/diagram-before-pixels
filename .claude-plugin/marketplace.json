@@ -1,0 +1,35 @@
+{
+  "name": "diagram-before-pixels",
+  "owner": {
+    "name": "diagram-before-pixels"
+  },
+  "metadata": {
+    "description": "ASCII-first diagramming workflow that cuts image-generation quota",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "diagram-before-pixels",
+      "displayName": "Diagram before pixels",
+      "description": "Converge on a diagram's structure in cheap ASCII, then spend exactly one image generation. Cuts image-model quota by roughly 10x.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "ascii",
+        "diagram",
+        "architecture-diagram",
+        "flowchart",
+        "image-generation",
+        "prompt-engineering",
+        "mermaid",
+        "quota"
+      ],
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./.agents/skills/diagram-before-pixels"
+      ]
+    }
+  ]
+}

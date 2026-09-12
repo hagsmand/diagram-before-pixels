@@ -1,0 +1,20 @@
+TITLE: <the one sentence the viewer must conclude>
+
+<root>/
+├── <group>/
+│   ├── <leaf>            <annotation: what it is / who owns it>
+│   └── <leaf>            <annotation>
+├── <group>/
+│   ├── <leaf>            <annotation>  ◀── <relationship to another node>
+│   └── <leaf>            <annotation>
+└── <group>/
+    └── <leaf>            <annotation>
+
+Fill-in order:
+  1. TITLE  2. structure  3. an annotation on EVERY leaf that matters
+  4. cross-references with ◀── for nodes that relate to each other
+
+The annotations are the diagram. A bare tree carries no more information than
+`ls -R` and does not justify an image.
+
+Align the annotation column. Prune any branch that does not serve the TITLE.

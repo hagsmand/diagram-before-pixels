@@ -1,0 +1,22 @@
+TITLE: <the one sentence the viewer must conclude>
+
+                        ┌──────────────┐
+                        │  <spoke 1>   │
+                        └──────▲───────┘
+                               │ <what crosses>
+                               │
+┌──────────────┐  <proto>  ┏━━━┷━━━━━━━━┓  <proto>  ┌──────────────┐
+│  <caller>    │──────────▶┃   <hub>    ┃──────────▶│  <spoke 2>   │
+└──────────────┘           ┗━━━┯━━━━┯━━━┛           └──────────────┘
+                               │    │ <proto>
+                    <what for> │    └──────────────▶┌──────────────┐
+                               ▼                    │  <spoke 3>   │
+                        ┌──────────────┐            └──────────────┘
+                        │  <spoke 4>   │
+                        └──────────────┘
+
+Fill-in order:
+  1. TITLE  2. the hub — heavy border, it is the subject  3. the caller
+  4. spokes  5. protocol and purpose on every edge
+
+Wrong pattern if any two spokes talk to each other. Use bounded-mesh.txt instead.
